@@ -3,7 +3,7 @@ package cmdtab_test
 import (
 	"fmt"
 
-	cmd "gitlab.com/rwx.gg/cmdtab"
+	cmd "gitlab.com/rwxrob/cmdtab"
 )
 
 type ImmaStringer struct{}
