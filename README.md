@@ -1,7 +1,7 @@
 # Go Tab Complete Commander
 
-![WIP](https://img.shields.io/badge/status-wip-red)[![Go Report
-Card](https://goreportcard.com/badge/gitlab.com/rwxrob/cmdtab)](https://goreportcard.com/report/gitlab.com/rwxrob/cmdtab)
+![WIP](https://img.shields.io/badge/status-wip-red)
+[![Go Report Card](https://goreportcard.com/badge/gitlab.com/rwxrob/cmdtab)](https://goreportcard.com/report/gitlab.com/rwxrob/cmdtab)
 [![Coverage](https://gocover.io/_badge/gitlab.com/rwxrob/cmdtab)](https://gocover.io/gitlab.com/rwxrob/cmdtab)
 [![GoDoc](https://godoc.org/gitlab.com/rwxrob/cmdtab?status.svg)](https://godoc.org/gitlab.com/rwxrob/cmdtab)
 
