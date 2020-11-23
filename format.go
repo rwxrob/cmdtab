@@ -132,14 +132,14 @@ func Format(input string, indent, width int) (output string) {
 		// end block
 		if inblock && len(trimmed) == 0 {
 			inblock = false
-			output += "\n\n" + Emphasize(Wrap(blockbuf, width-strip))
+			output += "\n\n" + Emphasize(Wrap(blockbuf, width-strip-4))
 			continue
 		}
 	}
 
 	// flush last block
 	if inblock {
-		output += "\n\n" + Emphasize(Wrap(blockbuf, width-strip))
+		output += "\n\n" + Emphasize(Wrap(blockbuf, width-strip-4))
 	}
 	output = Indent(strings.TrimSpace(output), indent)
 	return
@@ -272,7 +272,9 @@ func peekWord(buf []rune, start int) []rune {
 	return word
 }
 
-// Wrap wraps the string to the given width using spaces to separate words. If passed a negative width will effectively join all words in the buffer into a single line with no wrapping.
+// Wrap wraps the string to the given width using spaces to separate
+// words. If passed a negative width will effectively join all words in
+// the buffer into a single line with no wrapping.
 func Wrap(buf string, width int) string {
 	if width == 0 {
 		return buf
