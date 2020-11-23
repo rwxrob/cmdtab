@@ -404,6 +404,8 @@ licenses.
 
 Here's some stuff we know I want to add but haven't made issues or time for yet:
 
+* recursive `usage` building by combining `x.Usage` into one line
+* better color terminal detection and support, configurable
 * `add:addmember` - aliases to allow `sl member add` but `addmember` in `Index`
 * `_help_md` - output a markdown file containing doc info
 * `_help_html` - output a standalone HTML5 document with doc info

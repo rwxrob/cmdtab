@@ -22,11 +22,11 @@ func ExitError(err ...interface{}) {
 	switch e := err[0].(type) {
 	case string:
 		if len(err) > 1 {
-			fmt.Printf("Error: "+e+"\n", err[1:])
+			fmt.Printf(e+"\n", err[1:])
 		}
-		fmt.Println("Error: " + e)
+		fmt.Println(e)
 	case error:
-		fmt.Printf("Error: %v\n", e)
+		fmt.Printf("%v\n", e)
 	}
 	if !KeepAlive {
 		os.Exit(1)
