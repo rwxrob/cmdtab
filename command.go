@@ -244,7 +244,7 @@ func (c *Command) SubcommandUsage() []string {
 }
 
 func (c *Command) UsageError() error {
-	return fmt.Errorf(Emphasize(strings.TrimSpace(c.SprintUsage())))
+	return fmt.Errorf(Emphasize(strings.TrimSpace("**usage:** " + c.SprintUsage())))
 }
 
 // Complete prints the completion replies for the current context (See
