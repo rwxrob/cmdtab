@@ -41,7 +41,7 @@ import (
 // observed if found (and also provide color support for the less
 // pager utility):
 //
-// * italic - LESS_TERMCAP_us
+// * italic - LESS_TERMCAP_so
 // * bold - LESS_TERMCAP_md
 // * bolditalic = LESS_TERMCAP_mb
 //
@@ -155,6 +155,7 @@ func Emphasize(buf string) string {
 	// bold = `<bold>`
 	// bolditalic = `<bolditalic>`
 	// reset = `<reset>`
+	// underline = `<ul>`
 
 	nbuf := []rune{}
 	prev := ' '
@@ -166,11 +167,12 @@ func Emphasize(buf string) string {
 		r := []rune(buf)[i]
 
 		if r == '<' {
-			nbuf = append(nbuf, '<')
-			nbuf = append(nbuf, []rune(italic)...)
+			// TODO detect underline support
+			//nbuf = append(nbuf, '<')
+			nbuf = append(nbuf, []rune(underline)...)
 			for {
 				i++
-				r = []rune(buf)[i]
+				r = unicode.ToUpper(rune(buf[i]))
 				if r == '>' {
 					i++
 					break
@@ -178,7 +180,7 @@ func Emphasize(buf string) string {
 				nbuf = append(nbuf, r)
 			}
 			nbuf = append(nbuf, []rune(reset)...)
-			nbuf = append(nbuf, '>')
+			//nbuf = append(nbuf, '>')
 			i--
 			continue
 		}
@@ -308,8 +310,10 @@ var reset = "\033[0m"
 var italic = reset + "\033[3m"
 var bold = reset + "\033[1m"
 var bolditalic = reset + "\033[1m\033[3m"
+var underline = reset + "\033[4m"
 
 func init() {
+	//us := os.Getenv("LESS_TERMCAP_us")
 	us := os.Getenv("LESS_TERMCAP_us")
 	md := os.Getenv("LESS_TERMCAP_md")
 	mb := os.Getenv("LESS_TERMCAP_mb")

@@ -404,6 +404,9 @@ licenses.
 
 Here's some stuff we know I want to add but haven't made issues or time for yet:
 
+* support `<file>` syntax formatting rendered as all caps upper without
+  the angle brackets and underlined, or just leave if no support in
+  terminal for underlining to make compat visually with man pages
 * recursive `usage` building by combining `x.Usage` into one line
 * better color terminal detection and support, configurable
 * `add:addmember` - aliases to allow `sl member add` but `addmember` in `Index`
