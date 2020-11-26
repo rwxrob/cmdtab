@@ -404,6 +404,7 @@ licenses.
 
 Here's some stuff we know I want to add but haven't made issues or time for yet:
 
+* fix broken subcommands of subcommands with tab completion and usage
 * support `<file>` syntax formatting rendered as all caps upper without
   the angle brackets and underlined, or just leave if no support in
   terminal for underlining to make compat visually with man pages
