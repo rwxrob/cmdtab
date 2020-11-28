@@ -67,12 +67,12 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_version := New("_cmdversion")
-	_version.Summary = `Print the cmd package version`
+	_version.Summary = `print the cmd package version`
 	_version.Method = func(ignored []string) error { Println(Version); return nil }
 	builtins = append(builtins, "_cmdversion")
 
 	_builtins := New("_builtins")
-	_builtins.Summary = `List all cmd package builtins names and summaries`
+	_builtins.Summary = `list all cmd package builtins names and summaries`
 	_builtins.Method = func(ignored []string) error {
 		sort.Strings(builtins)
 		for _, name := range builtins {
@@ -85,7 +85,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_complete := New("_complete")
-	_complete.Summary = `Force completion context`
+	_complete.Summary = `force completion context`
 	_complete.Method = func(args []string) error {
 		words := []string{Main.Name}
 		words = append(words, args...)
@@ -98,7 +98,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_index := New("_index")
-	_index.Summary = `List all names and summaries from cmd package index`
+	_index.Summary = `list all names and summaries from cmd package index`
 	_index.Method = func(ignored []string) error {
 		for _, name := range allnames() {
 			Print("%-14v %v\n", name, strings.TrimSpace(Index[name].Summary))
@@ -110,7 +110,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_names := New("_names")
-	_names.Summary = `List names, main first`
+	_names.Summary = `list names, main first`
 	_names.Method = func(ignored []string) error {
 		Println(Main.Name)
 		for _, name := range names() {
@@ -125,7 +125,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_summaries := New("_summaries")
-	_summaries.Summary = `List names and summaries`
+	_summaries.Summary = `list names and summaries`
 	_summaries.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(Index[name].Summary))
@@ -137,7 +137,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_versions := New("_versions")
-	_versions.Summary = `List names and versions`
+	_versions.Summary = `list names and versions`
 	_versions.Method = func(args []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Version)))
@@ -149,7 +149,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_copyrights := New("_copyrights")
-	_copyrights.Summary = `List names and copyrights`
+	_copyrights.Summary = `list names and copyrights`
 	_copyrights.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(string(String(Index[name].Copyright))))
@@ -161,7 +161,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_licenses := New("_licenses")
-	_licenses.Summary = `List names and licenses`
+	_licenses.Summary = `list names and licenses`
 	_licenses.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].License)))
@@ -173,7 +173,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_authors := New("_authors")
-	_authors.Summary = `List names and authors`
+	_authors.Summary = `list names and authors`
 	_authors.Method = func(ignored []string) error {
 		for _, name := range names() {
 			author := Index[name].Author
@@ -189,7 +189,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_gits := New("_gits")
-	_gits.Summary = `List names and git source repos`
+	_gits.Summary = `list names and git source repos`
 	_gits.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Git)))
@@ -201,7 +201,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_issues := New("_issues")
-	_issues.Summary = `List names and issue reporting URLs`
+	_issues.Summary = `list names and issue reporting URLs`
 	_issues.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Issues)))
@@ -213,7 +213,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_usages := New("_usages")
-	_usages.Summary = `List names and usages`
+	_usages.Summary = `list names and usages`
 	_usages.Method = func(ignored []string) error {
 		for _, name := range names() {
 			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Usage)))
@@ -225,7 +225,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_desc := New("_descriptions")
-	_desc.Summary = `List names and descriptions`
+	_desc.Summary = `list names and descriptions`
 	_desc.Method = func(ignored []string) error {
 		emph := DisableEmphasis
 		DisableEmphasis = true
@@ -242,7 +242,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_examples := New("_examples")
-	_examples.Summary = `List names and examples`
+	_examples.Summary = `list names and examples`
 	_examples.Method = func(ignored []string) error {
 		emph := DisableEmphasis
 		DisableEmphasis = true
@@ -259,7 +259,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	_help_json := New("_help_json")
-	_help_json.Summary = `Dump help documentation as JSON`
+	_help_json.Summary = `dump help documentation as JSON`
 	_help_json.Method = func(args []string) error {
 		emph := DisableEmphasis
 		DisableEmphasis = true
@@ -272,7 +272,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	help := New("help")
-	help.Summary = "Display detailed help documentation"
+	help.Summary = "display detailed help documentation"
 	help.Method = func(args []string) error {
 		c := Main
 		if len(args) > 0 && Has(args[0]) {
@@ -305,7 +305,7 @@ func init() {
 	// ----------------------------------------------------------------
 
 	version := New("version")
-	version.Summary = `Display version, author, and legal information`
+	version.Summary = `display version, author, and legal information`
 	version.Method = func(args []string) error {
 		emph := DisableEmphasis
 		DisableEmphasis = true
