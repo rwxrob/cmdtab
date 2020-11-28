@@ -286,7 +286,7 @@ func (c *Command) Complete(compline string) {
 		}
 		if c.Parameters != nil {
 			for _, param := range strings.Split(String(c.Parameters), " ") {
-				if strings.HasPrefix(param, complete) {
+				if complete != param && strings.HasPrefix(param, complete) {
 					Println(param)
 				}
 			}
