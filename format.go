@@ -328,12 +328,12 @@ func init() {
 	}
 }
 
-type winsz struct {
+type Winsz struct {
 	Row, Col       uint16
 	Xpixel, Ypixel uint16
 }
 
-var WinSize winsz
+var WinSize Winsz
 
 func termHeading(left, center, right string, cols int) string {
 	llen := len([]rune(left))
