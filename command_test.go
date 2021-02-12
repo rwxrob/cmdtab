@@ -3,7 +3,7 @@ package cmdtab_test
 import (
 	"fmt"
 
-	cmd "gitlab.com/rwxrob/cmdtab"
+	cmd "github.com/rwxrob/cmdtab"
 )
 
 func ExampleCommand_VersionLine() {
@@ -34,8 +34,8 @@ func ExampleCommand_MarshalJSON() {
 	c.Copyright = `© Rob`
 	c.Description = `Just for testing.`
 	c.Examples = `examples`
-	c.Git = `gitlab.com/rwxrob/cmdtab`
-	c.Issues = `https://gitlab.com/rwxrob/cmdtab/issues`
+	c.Git = `github.com/rwxrob/cmdtab`
+	c.Issues = `https://github.com/rwxrob/cmdtab/issues`
 	c.License = `Apache 2.0`
 	//c.SeeAlso = ``
 	c.Summary = `summary`
@@ -54,8 +54,8 @@ func ExampleCommand_MarshalJSON() {
 	//   "Copyright": "© Rob",
 	//   "Description": "Just for testing.",
 	//   "Examples": "examples",
-	//   "Git": "gitlab.com/rwxrob/cmdtab",
-	//   "Issues": "https://gitlab.com/rwxrob/cmdtab/issues",
+	//   "Git": "github.com/rwxrob/cmdtab",
+	//   "Issues": "https://github.com/rwxrob/cmdtab/issues",
 	//   "License": "Apache 2.0",
 	//   "Name": "mycmd",
 	//   "Subcommands": [

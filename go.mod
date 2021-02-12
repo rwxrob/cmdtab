@@ -1,3 +1,3 @@
-module gitlab.com/rwxrob/cmdtab
+module github.com/rwxrob/cmdtab
 
 go 1.15

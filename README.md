@@ -1,10 +1,10 @@
 # Go Tab Complete Commander
 
-*Canonical source at <https://gitlab.com/rwxrob/cmdtab>*
+*Canonical source at <https://github.com/rwxrob/cmdtab>*
 
 ![WIP](https://img.shields.io/badge/status-wip-red)
-[![Go Report Card](https://goreportcard.com/badge/gitlab.com/rwxrob/cmdtab)](https://goreportcard.com/report/gitlab.com/rwxrob/cmdtab)
-[![GoDoc](https://godoc.org/gitlab.com/rwxrob/cmdtab?status.svg)](https://godoc.org/gitlab.com/rwxrob/cmdtab)
+[![Go Report Card](https://goreportcard.com/badge/github.com/rwxrob/cmdtab)](https://goreportcard.com/report/github.com/rwxrob/cmdtab)
+[![GoDoc](https://godoc.org/github.com/rwxrob/cmdtab?status.svg)](https://godoc.org/github.com/rwxrob/cmdtab)
 
 *A commander for modern command-line human-computer interactions.*
 
@@ -17,11 +17,11 @@ documentation.
 
 ## Installation
 
-Normally you would simply `import "gitlab.com/rwxrob/cmdtab"` but you
+Normally you would simply `import "github.com/rwxrob/cmdtab"` but you
 can install it for review using the following as well:
 
 ```
-go get -u gitlab.com/rwxrob/cmdtab
+go get -u github.com/rwxrob/cmdtab
 ```
 
 ## Advantages

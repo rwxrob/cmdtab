@@ -3,7 +3,7 @@ package cmdtab_test
 import (
 	"fmt"
 
-	cmd "gitlab.com/rwxrob/cmdtab"
+	cmd "github.com/rwxrob/cmdtab"
 )
 
 func ExampleMapOpts() {
