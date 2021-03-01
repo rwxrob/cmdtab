@@ -1,4 +1,4 @@
-# Go Tab Complete Commander
+# Go Tab Complete Commander (`cmdtab`)
 
 *Canonical source at <https://github.com/rwxrob/cmdtab>*
 
