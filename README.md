@@ -242,6 +242,9 @@ it.
   needs the completion and exposes as little dependency on shell
   completion methods as possible.
 
+* Use of aliases (`d|del|delete`) allows accessibility even if tab
+  completion is not (yet) supported on a particular platform.
+
 * Inferring the main (top-level) command to use was considered to be the
   first argument (`os.Args[0]`) for some time but further research
   revealed it can never be relied upon fully. It also initially seemed
@@ -304,6 +307,7 @@ it.
   and uncoupled as possible. In the extreme case when subcommands need
   to communicate they should use system environment variables as would
   any other two commands normally.
+
 
 ## How Does Completion Work?
 
@@ -412,7 +416,6 @@ Here's some stuff we know I want to add but haven't made issues or time for yet:
   terminal for underlining to make compat visually with man pages
 * recursive `usage` building by combining `x.Usage` into one line
 * better color terminal detection and support, configurable
-* `add:addmember` - aliases to allow `sl member add` but `addmember` in `Index`
 * `_help_md` - output a markdown file containing doc info
 * `_help_html` - output a standalone HTML5 document with doc info
 * `_help_http` - serves the `_help_html` document locally
