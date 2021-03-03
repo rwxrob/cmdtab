@@ -213,11 +213,20 @@ func (c *Command) Has(name string) bool {
 	return false
 }
 
-// Add adds new subcommands by name skipping any it already has. It is up to
-// developers to ensure that the named subcommands has been added to the internal
-// package index with New().
+// Add adds new subcommands by name skipping any it already has. It is
+// up to developers to ensure that the named subcommands has been added
+// to the internal package index with New(). If any name contains a bar
+// (|) then it will be split with the last item assumed to be the actual
+// name and the first elements considered subcommand aliases (which are
+// also added to the internal Subcommands).
 func (c *Command) Add(names ...string) {
 	for _, name := range names {
+		if strings.ContainsRune(name, '|') {
+			for _, n := range strings.Split(name, "|") {
+				c.Add(n)
+			}
+			return
+		}
 		if !c.Has(name) {
 			c.subcommands = append(c.subcommands, name)
 		}

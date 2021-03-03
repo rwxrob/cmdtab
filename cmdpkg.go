@@ -149,10 +149,10 @@ func Has(name string) bool {
 	return has
 }
 
-// New initializes a new command and subcommands (adding them to the internal
-// subcommand index) and returns a pointer to the command. Note that the subcmds
-// added do not create a new Command in the Index, they are merely added
-// to the list returned by Subcommands.
+// New initializes a new command and subcommands (adding them to the
+// internal subcommand index) and returns a pointer to the command. Note
+// that the subcmds added do not create a new Command in the Index, they
+// are merely added to the list returned by Subcommands.
 func New(name string, subcmds ...string) *Command {
 	c := new(Command)
 	c.Name = name
