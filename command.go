@@ -19,7 +19,7 @@ type Command struct {
 	Issues      Stringer            // full web URL
 	Copyright   Stringer            // legal copyright statement, if any
 	License     Stringer            // released under license(s), if any
-	Other       map[string]Stringer // long form
+	Other       map[string]Stringer // other (custom) doc sections
 
 	Method     func(args []string) error
 	Parameters Stringer
@@ -169,6 +169,7 @@ func (c Command) MarshalJSON() ([]byte, error) {
 		s["Subcommands"] = c.subcommands
 	}
 
+	// add custom (other) sections to docs
 	for k, v := range c.Other {
 		s[k] = String(v)
 	}
