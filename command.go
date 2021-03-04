@@ -40,7 +40,7 @@ func (c Command) vsubcommands() []*Command {
 		if name[0] == '_' {
 			continue
 		}
-		if command, has := Index[name]; has {
+		if command, has := _Index[name]; has {
 			commands = append(commands, command)
 		}
 	}
@@ -247,7 +247,7 @@ func (c *Command) Subcommands() []string {
 func (c *Command) SubcommandUsage() []string {
 	usages := []string{}
 	for _, name := range c.subcommands {
-		usage := Index[name].Usage
+		usage := _Index[name].Usage
 		usages = append(usages, String(usage))
 	}
 	return usages
@@ -276,7 +276,7 @@ func (c *Command) Complete(compline string) {
 		name := words[len(words)-2]
 		complete := words[len(words)-1]
 		if c.Name != name {
-			if subcmd, has := Index[name]; has {
+			if subcmd, has := _Index[name]; has {
 				compline = strings.Join(words[len(words)-2:], " ")
 				subcmd.Complete(compline)
 			}
@@ -284,7 +284,7 @@ func (c *Command) Complete(compline string) {
 		}
 		for _, subname := range c.subcommands {
 			if subname == complete {
-				if subcmd, has := Index[subname]; has {
+				if subcmd, has := _Index[subname]; has {
 					compline = strings.Join(words[len(words)-1:], " ")
 					subcmd.Complete(compline)
 				}
@@ -330,7 +330,7 @@ func (c *Command) Call(args []string) error {
 		subcmd := args[0]
 		for _, name := range c.subcommands {
 			if name == subcmd {
-				if command, has := Index[name]; has {
+				if command, has := _Index[name]; has {
 					return command.Call(args[1:])
 				}
 				return Unimplemented(name)
@@ -338,7 +338,7 @@ func (c *Command) Call(args []string) error {
 		}
 	}
 	if c.Default != "" {
-		if command, has := Index[c.Default]; has {
+		if command, has := _Index[c.Default]; has {
 			return command.Call(args)
 		}
 		return Unimplemented(c.Default)

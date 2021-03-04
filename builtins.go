@@ -36,7 +36,7 @@ func init() {
 
 	allnames := func() []string {
 		names := []string{}
-		for name, _ := range Index {
+		for name, _ := range _Index {
 			names = append(names, name)
 		}
 		sort.Strings(names)
@@ -76,7 +76,7 @@ func init() {
 	_builtins.Method = func(ignored []string) error {
 		sort.Strings(builtins)
 		for _, name := range builtins {
-			Print("%-14v %v\n", name, strings.TrimSpace(Index[name].Summary))
+			Print("%-14v %v\n", name, strings.TrimSpace(_Index[name].Summary))
 		}
 		return nil
 	}
@@ -101,7 +101,7 @@ func init() {
 	_index.Summary = `list all names and summaries from cmd package index`
 	_index.Method = func(ignored []string) error {
 		for _, name := range allnames() {
-			Print("%-14v %v\n", name, strings.TrimSpace(Index[name].Summary))
+			Print("%-14v %v\n", name, strings.TrimSpace(_Index[name].Summary))
 		}
 		return nil
 	}
@@ -128,7 +128,7 @@ func init() {
 	_summaries.Summary = `list names and summaries`
 	_summaries.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(Index[name].Summary))
+			Print("%-14v %v\n", name, strings.TrimSpace(_Index[name].Summary))
 		}
 		return nil
 	}
@@ -140,7 +140,7 @@ func init() {
 	_versions.Summary = `list names and versions`
 	_versions.Method = func(args []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Version)))
+			Print("%-14v %v\n", name, strings.TrimSpace(String(_Index[name].Version)))
 		}
 		return nil
 	}
@@ -152,7 +152,7 @@ func init() {
 	_copyrights.Summary = `list names and copyrights`
 	_copyrights.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(string(String(Index[name].Copyright))))
+			Print("%-14v %v\n", name, strings.TrimSpace(string(String(_Index[name].Copyright))))
 		}
 		return nil
 	}
@@ -164,7 +164,7 @@ func init() {
 	_licenses.Summary = `list names and licenses`
 	_licenses.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].License)))
+			Print("%-14v %v\n", name, strings.TrimSpace(String(_Index[name].License)))
 		}
 		return nil
 	}
@@ -176,7 +176,7 @@ func init() {
 	_authors.Summary = `list names and authors`
 	_authors.Method = func(ignored []string) error {
 		for _, name := range names() {
-			author := Index[name].Author
+			author := _Index[name].Author
 			if author == nil {
 				author = ""
 			}
@@ -192,7 +192,7 @@ func init() {
 	_gits.Summary = `list names and git source repos`
 	_gits.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Git)))
+			Print("%-14v %v\n", name, strings.TrimSpace(String(_Index[name].Git)))
 		}
 		return nil
 	}
@@ -204,7 +204,7 @@ func init() {
 	_issues.Summary = `list names and issue reporting URLs`
 	_issues.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Issues)))
+			Print("%-14v %v\n", name, strings.TrimSpace(String(_Index[name].Issues)))
 		}
 		return nil
 	}
@@ -216,7 +216,7 @@ func init() {
 	_usages.Summary = `list names and usages`
 	_usages.Method = func(ignored []string) error {
 		for _, name := range names() {
-			Print("%-14v %v\n", name, strings.TrimSpace(String(Index[name].Usage)))
+			Print("%-14v %v\n", name, strings.TrimSpace(String(_Index[name].Usage)))
 		}
 		return nil
 	}
@@ -231,7 +231,7 @@ func init() {
 		DisableEmphasis = true
 		for _, name := range names() {
 			Print("DESCRIPTION %v\n\n", name)
-			Println(Format(String(Index[name].Description), 4, int(WinSize.Col)))
+			Println(Format(String(_Index[name].Description), 4, int(WinSize.Col)))
 			Println()
 		}
 		DisableEmphasis = emph
@@ -248,7 +248,7 @@ func init() {
 		DisableEmphasis = true
 		for _, name := range names() {
 			Print("EXAMPLE %v\n\n", name)
-			Print(Sprint(Format(String(Index[name].Examples), 4, int(WinSize.Col))))
+			Print(Sprint(Format(String(_Index[name].Examples), 4, int(WinSize.Col))))
 			Print("\n\n")
 		}
 		DisableEmphasis = emph
@@ -276,7 +276,7 @@ func init() {
 	help.Method = func(args []string) error {
 		c := Main
 		if len(args) > 0 && Has(args[0]) {
-			c = Index[args[0]]
+			c = _Index[args[0]]
 		}
 		output := Sprint(clearScreen + termHeading(
 			bold+c.Name, reset+"DOCUMENTATION", bold+c.Name,
@@ -310,7 +310,7 @@ func init() {
 		emph := DisableEmphasis
 		DisableEmphasis = true
 		if len(args) > 0 {
-			v := Index[args[0]].VersionLine()
+			v := _Index[args[0]].VersionLine()
 			if v != "" {
 				Println(v)
 			}
@@ -325,7 +325,7 @@ func init() {
 			if name == Main.Name {
 				continue
 			}
-			line := Index[name].VersionLine()
+			line := _Index[name].VersionLine()
 			if line == "" {
 				continue
 			}

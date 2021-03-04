@@ -11,19 +11,12 @@ import (
 
 // Index contains all the commands available as subcommands with one of them
 // being set to Main. Commands are created and registered with New().
-//
-// WARNING: Index is made public only to cover the unforeseen needs of command
-// creators to inspect their own Command set but should not be relied upon
-// heavily to avoid unnecessary coupling dependencies between commands. While
-// the Index type is guaranteed never to change, direct manipulation of the
-// Index is strongly discouraged. Use one of the helper package methods instead
-// (or request the addition of one).
-var Index = map[string]*Command{}
+var _Index = map[string]*Command{}
 
 // Visible returns a new map containing only pointers to the visible Commands.
 func Visible() map[string]*Command {
 	vis := make(map[string]*Command)
-	for k, v := range Index {
+	for k, v := range _Index {
 		if !v.Hidden() {
 			vis[k] = v
 		}
@@ -34,7 +27,7 @@ func Visible() map[string]*Command {
 // Hidden returns a new map containing only pointers to the hidden Commands.
 func Hidden() map[string]*Command {
 	vis := make(map[string]*Command)
-	for k, v := range Index {
+	for k, v := range _Index {
 		if v.Hidden() {
 			vis[k] = v
 		}
@@ -69,7 +62,7 @@ var Args = os.Args[1:]
 // internationalized aliases.
 func Call(name string, args []string) error {
 	defer TrapPanic()
-	command, has := Index[name]
+	command, has := _Index[name]
 	if !has {
 		return Unimplemented(name)
 	}
@@ -109,11 +102,11 @@ var Main *Command
 // Execute traps all panics (see Panic), detects completion and does it, or
 // sets Main to the command name passed, injects the Builtin subcommands
 // (unless OmitBuiltins is true), looks up the named command from the
-// command Index and calls it passing cmd.Args. Execute alway exits
+// internal command Index and calls it passing cmd.Args. Execute alway exits
 // the program.
 func Execute(name string) {
 	defer TrapPanic()
-	command, has := Index[name]
+	command, has := _Index[name]
 	if !has {
 		ExitUnimplemented(name)
 	}
@@ -143,16 +136,16 @@ func ExitExec(xnargs ...string) error {
 	return syscall.Exec(xnargs[0], xnargs, os.Environ())
 }
 
-// Has looks for the named subcommand in the Index.
+// Has looks for the named command in the internal command Index.
 func Has(name string) bool {
-	_, has := Index[name]
+	_, has := _Index[name]
 	return has
 }
 
-// New initializes a new command and subcommands (adding them to the
-// internal subcommand index) and returns a pointer to the command. Note
-// that the subcmds added do not create a new Command in the Index, they
-// are merely added to the list returned by Subcommands.
+// New initializes a new Command with subcommands (adding them to the
+// internal subcommand index) and returns a pointer to the Command. Note
+// that the subcommands are *not* added to the internal Command Index.
+// They are saved as a list within the Command as Subcommands.
 func New(name string, subcmds ...string) *Command {
 	c := new(Command)
 	c.Name = name
@@ -162,7 +155,7 @@ func New(name string, subcmds ...string) *Command {
 		c.Add(subcmds...)
 	}
 	c.Usage = func() string { return c.defaultUsage() }
-	Index[name] = c
+	_Index[name] = c
 	return c
 }
 
