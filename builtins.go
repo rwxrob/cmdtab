@@ -5,10 +5,18 @@ import (
 	"strings"
 )
 
+// WARNING: The use of the internal _Index directly is because of the
+// builtin nature of these specific commands. Commands should generally
+// use a read-only call to Index() instead to do similar things.
+
 // OmitBuiltins turns off the injection of the Builtin subcommands into the
 // Main command when Execute is called. It can be assigned in any init() or
 // from main() before calling Execute().
-var OmitBuiltins bool
+var OmitBuiltins bool = true
+
+// OmitAllBuiltins prevents even the help and version builtins from
+// being included (which is useful mostly for creating example tests).
+var OmitAllBuiltins bool
 
 // Builtins are subcommands that are added to every Main command when
 // Execute is called. This can be prevented by setting OmitBuiltins to false.

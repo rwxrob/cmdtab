@@ -13,6 +13,17 @@ import (
 // being set to Main. Commands are created and registered with New().
 var _Index = map[string]*Command{}
 
+// Index constructs and returns a static copy of the internal command
+// index. This is sometimes useful when constructing helper commands
+// that display these commands in different ways. Safe for concurrency.
+func Index() map[string]Command {
+	copy := make(map[string]Command, len(_Index))
+	for k, v := range _Index {
+		copy[k] = *v
+	}
+	return copy
+}
+
 // Visible returns a new map containing only pointers to the visible Commands.
 func Visible() map[string]*Command {
 	vis := make(map[string]*Command)
@@ -111,8 +122,11 @@ func Execute(name string) {
 		ExitUnimplemented(name)
 	}
 	Main = command
-	if !OmitBuiltins {
+	if !OmitAllBuiltins {
 		for _, name := range builtins {
+			if OmitBuiltins && name[0:1] == "_" {
+				continue
+			}
 			Main.Add(name)
 		}
 	}
