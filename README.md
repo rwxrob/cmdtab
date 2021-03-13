@@ -1,7 +1,5 @@
 # Go Tab Complete Commander (`cmdtab`)
 
-*Canonical source at <https://github.com/rwxrob/cmdtab>*
-
 ![WIP](https://img.shields.io/badge/status-wip-red)
 [![Go Report Card](https://goreportcard.com/badge/github.com/rwxrob/cmdtab)](https://goreportcard.com/report/github.com/rwxrob/cmdtab)
 [![GoDoc](https://godoc.org/github.com/rwxrob/cmdtab?status.svg)](https://godoc.org/github.com/rwxrob/cmdtab)
@@ -12,17 +10,12 @@
 
 *Tab Complete Commander* is a lightweight commander package focused on
 creating human-friendly terminal command-line interfaces composed of
-modular subcommands with portable completion and embedded, dynamic
-documentation.
+modular subcommands that can be imported as packages with portable
+completion and embedded, dynamic documentation.
 
 ## Installation
 
-Normally you would simply `import "github.com/rwxrob/cmdtab"` but you
-can install it for review using the following as well:
-
-```
-go get -u github.com/rwxrob/cmdtab
-```
+Normally you would simply `import "github.com/rwxrob/cmdtab"`.
 
 ## Advantages
 
@@ -35,6 +28,9 @@ go get -u github.com/rwxrob/cmdtab
 
 * Easiest possible command documentation with support for emphasis with
   simple Markdown formatting.
+
+* Commands can be used standalone or as subcommands of a monolith (think
+  BusyBox).
 
 ## Ongoing Project
 
