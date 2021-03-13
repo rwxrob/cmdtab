@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 
 	"github.com/rwxrob/cmdtab"
@@ -14,12 +13,12 @@ func main() {
 	}
 	if cmdtab.IsTerminal() {
 		if verbose {
-			fmt.Println("yes")
+			cmdtab.SmartPrintln("yes")
 		}
 		os.Exit(0)
 	}
 	if verbose {
-		fmt.Println("no")
+		cmdtab.SmartPrintln("no")
 	}
 	os.Exit(1)
 }

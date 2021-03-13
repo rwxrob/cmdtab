@@ -92,5 +92,14 @@ func PrintPaged(buf, status string) {
 
 func linecount(buf string) int {
 	return bytes.Count([]byte(buf), []byte{'\n'})
+}
 
+// SmartPrintln calls Println() or Print() based on if IsTerminal()
+// returns true or not.
+func SmartPrintln(a ...interface{}) {
+	if IsTerminal() {
+		Println(a...)
+		return
+	}
+	Print(a...)
 }
