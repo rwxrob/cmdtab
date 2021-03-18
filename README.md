@@ -32,6 +32,17 @@ Normally you would simply `import "github.com/rwxrob/cmdtab"`.
 * Commands can be used standalone or as subcommands of a monolith (think
   BusyBox).
 
+# Terminology
+
+A ***command module*** is an importable Go module hosted in a Git
+repository containing both an `init` function and a *standalone* command
+package with a `main` function allowing it to be used by itself or
+composed into another command as a subcommand.
+
+When referring to ***standalone*** in this context we mean a *command
+module* that has been compiled into a single command from its command
+package with a `main` function. 
+
 ## Ongoing Project
 
 Although Complete Commander is fully functional now it should still be
