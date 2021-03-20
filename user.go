@@ -8,4 +8,9 @@ import "os/user"
 // involve user information.
 var User *user.User
 
-func init() { User, _ = user.Current() }
+func init() {
+	User, _ = user.Current()
+	if User == nil {
+		User = new(user.User)
+	}
+}
