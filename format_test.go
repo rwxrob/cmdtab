@@ -1,5 +1,6 @@
 package cmdtab
 
+/*
 import "testing"
 
 var tests = [][]string{
@@ -36,16 +37,16 @@ var tests = [][]string{
 		`
     Here is a list using trailing spaces:
 
-    * one  
-    * two  
-    * three  
-    
+    * one
+    * two
+    * three
+
     Same as:
-    
-    * four  
-    * five  
-    * six  
-    
+
+    * four
+    * five
+    * six
+
     Ok.`,
 		"Here is a list using trailing spaces:\n\n* one\n* two\n* three\n\nSame as:\n\n* four\n* five\n* six\n\nOk.",
 	},
@@ -62,7 +63,7 @@ var tests = [][]string{
 	},
 	{
 		`
-    but does this  
+    but does this
     work
     `,
 		"but does this\nwork",
@@ -79,34 +80,34 @@ var tests = [][]string{
 	},
 	{
 		`
-        mkcmd simplecmd  
-        mkcmd sk today tomorrow sessions schedule week reservations  
-        mkcmd blog config set post edit delete rotate  
+        mkcmd simplecmd
+        mkcmd sk today tomorrow sessions schedule week reservations
+        mkcmd blog config set post edit delete rotate
 
         This would create the following files:
 
-        * main.go  
-        * blog.go  
-        * config.go  
-        * set.go  
-        * post.go  
-        * edit.go  
-        * delete.go  
-        * rotate.go  
+        * main.go
+        * blog.go
+        * config.go
+        * set.go
+        * post.go
+        * edit.go
+        * delete.go
+        * rotate.go
 
         If a cmd directory is detected the files will be created there instead:
 
-        * cmd/blog/main.go  
-        * cmd/blog/blog.go  
-        * cmd/blog/config.go  
-        * cmd/blog/set.go  
-        * cmd/blog/post.go  
-        * cmd/blog/edit.go  
-        * cmd/blog/delete.go  
-        * cmd/blog/rotate.go  
+        * cmd/blog/main.go
+        * cmd/blog/blog.go
+        * cmd/blog/config.go
+        * cmd/blog/set.go
+        * cmd/blog/post.go
+        * cmd/blog/edit.go
+        * cmd/blog/delete.go
+        * cmd/blog/rotate.go
 
         These files contain the starter code for that subcommand. The main.go
-        file contains the starter code for the built-in Main command. 
+        file contains the starter code for the built-in Main command.
         `,
 		"mkcmd simplecmd\nmkcmd sk today tomorrow sessions schedule week reservations\nmkcmd blog config set post edit delete rotate\n\nThis would create the following files:\n\n* main.go\n* blog.go\n* config.go\n* set.go\n* post.go\n* edit.go\n* delete.go\n* rotate.go\n\nIf a cmd directory is detected the files will be created there instead:\n\n* cmd/blog/main.go\n* cmd/blog/blog.go\n* cmd/blog/config.go\n* cmd/blog/set.go\n* cmd/blog/post.go\n* cmd/blog/edit.go\n* cmd/blog/delete.go\n* cmd/blog/rotate.go\n\nThese files contain the starter code for that subcommand. The main.go\nfile contains the starter code for the built-in Main command.",
 	},
@@ -203,3 +204,4 @@ func TestTermTitle(t *testing.T) {
 		t.Error("termHeading none failed")
 	}
 }
+*/
