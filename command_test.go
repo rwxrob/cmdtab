@@ -3,21 +3,21 @@ package cmdtab_test
 import (
 	"fmt"
 
-	cmd "github.com/rwxrob/cmdtab"
+	"github.com/rwxrob/cmdtab"
 )
 
 func ExampleCommand_VersionLine() {
 
-	c := cmd.New("foo")
-	fmt.Println(c.VersionLine())
-	c.Version = `v1.0.0`
-	fmt.Println(c.VersionLine())
-	c.Copyright = `© Rob`
-	fmt.Println(c.VersionLine())
-	c.License = `Apache 2.0`
-	fmt.Println(c.VersionLine())
-	c.Copyright = ""
-	fmt.Println(c.VersionLine())
+	x := cmdtab.New("foo")
+	fmt.Println(x.VersionLine())
+	x.Version = `v1.0.0`
+	fmt.Println(x.VersionLine())
+	x.Copyright = `© Rob`
+	fmt.Println(x.VersionLine())
+	x.License = `Apache 2.0`
+	fmt.Println(x.VersionLine())
+	x.Copyright = ""
+	fmt.Println(x.VersionLine())
 
 	// Output:
 	//
@@ -29,24 +29,24 @@ func ExampleCommand_VersionLine() {
 
 func ExampleCommand_MarshalJSON() {
 
-	c := cmd.New("mycmd", "subcmd1", "subcmd2")
-	c.Author = `Rob`
-	c.Copyright = `© Rob`
-	c.Description = `Just for testing.`
-	c.Examples = `examples`
-	c.Git = `github.com/rwxrob/cmdtab`
-	c.Issues = `https://github.com/rwxrob/cmdtab/issues`
-	c.License = `Apache 2.0`
-	//c.SeeAlso = ``
-	c.Summary = `summary`
-	//c.Usage = ``
-	c.Version = `v1.0.0`
+	x := cmdtab.New("mycmd", "subcmd1", "subcmd2")
+	x.Author = `Rob`
+	x.Copyright = `© Rob`
+	x.Description = `Just for testing.`
+	x.Examples = `examples`
+	x.Git = `github.com/rwxrob/cmdtab`
+	x.Issues = `https://github.com/rwxrob/cmdtab/issues`
+	x.License = `Apache 2.0`
+	//x.SeeAlso = ``
+	x.Summary = `summary`
+	//x.Usage = ``
+	x.Version = `v1.0.0`
 
 	// without these Usage won't return because they do not exist
-	cmd.New("subcmd1")
-	cmd.New("subcmd2")
+	cmdtab.New("subcmd1")
+	cmdtab.New("subcmd2")
 
-	fmt.Println(c)
+	fmt.Println(x)
 
 	// Unordered Output:
 	// {

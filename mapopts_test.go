@@ -3,7 +3,7 @@ package cmdtab_test
 import (
 	"fmt"
 
-	cmd "github.com/rwxrob/cmdtab"
+	"github.com/rwxrob/cmdtab"
 )
 
 func ExampleMapOpts() {
@@ -29,13 +29,13 @@ func ExampleMapOpts() {
 		"-t", "notavalue",
 	}
 
-	opts, args := cmd.MapOpts(cmdArgs[1:])
+	opts, args := cmdtab.MapOpts(cmdArgs[1:])
 
 	fmt.Println("Options:")
-	fmt.Println(cmd.ConvertToJSON(opts))
+	fmt.Println(cmdtab.ConvertToJSON(opts))
 
 	fmt.Println("Arguments:")
-	fmt.Println(cmd.ConvertToJSON(args))
+	fmt.Println(cmdtab.ConvertToJSON(args))
 
 	// Unordered output:
 	//

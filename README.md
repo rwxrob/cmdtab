@@ -59,7 +59,7 @@ This approach incurs no more performance hit than would already be
 required for any other such solution and is 100% concurrency safe.
 
 By the time the command-line application's `main()` function is called
-all it has to do is `cmd.Execute("mycmd")` to execute the top-level
+all it has to do is `cmdtab.Execute("mycmd")` to execute the top-level
 command:
 
 1. Detects and responds to programmable shell completion context
@@ -236,7 +236,7 @@ it.
   to produce consistent command output formatting. It had been suggested
   to put such into another package instead but this package is so small
   that ultimately turned out to be overkill. Besides, the formatting
-  used by `cmd` is highly specific to making output look good on a
+  used by `cmdtab` is highly specific to making output look good on a
   terminal as it relates to command documentation.
 
 * Rather than hard-code a dependency on Bash completion, every effort
@@ -244,7 +244,7 @@ it.
   completion API (despite the many references to Bash, which dominates
   currently). As long as any shell completion implementation sets an
   environment variable containing the full line to be completed package
-  `cmd` will always be able to sense completion context and perform.
+  `cmdtab` will always be able to sense completion context and perform.
   This puts the completion logic safely embedded into the command that
   needs the completion and exposes as little dependency on shell
   completion methods as possible.
@@ -258,7 +258,7 @@ it.
   clever to change the behavior of an executable simply by changing its
   name but this was quickly dismissed when clearer thinking prevailed
   concerning this and other security concerns. Therefore, the first
-  command must be passed as an argument to `cmd.Execute("mytopcmd")`. It
+  command must be passed as an argument to `cmdtab.Execute("mytopcmd")`. It
   is simple enough, however, to compile other executables with different
   main commands. Indeed, only the argument to need change to do so.
 
@@ -334,7 +334,7 @@ allows *Complete Commander* to detect completion context and only print
 the words that should be possible for the last word of the command when
 the tab key was pressed.
 
-The `cmd` package then sees completion context it resolves it by calling
+The `cmdtab` package then sees completion context it resolves it by calling
 Complete(). See the package docs for more on the specific algorithm
 used, but generally it does the following:
 
@@ -354,7 +354,7 @@ regarding terminal command line usage.
 
 Unless specifically disabled with `OmitBuiltins` (although the size to
 add these builtins is trivial), the following internal subcommands are
-added to any executable that is created using the `cmd` package:
+added to any executable that is created using the `cmdtab` package:
 
 * `help [<subcmd>]`
 * `usage`
