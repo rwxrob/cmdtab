@@ -413,11 +413,14 @@ place to put all legal and authorship information in addition to just
 the version. Such is required by most all free software and open-source
 licenses.
 
+### Examples
+
+For examples, please refer to the [examples](examples) directory.
+
 ## TODO
 
 Here's some stuff we know I want to add but haven't made issues or time for yet:
 
-* move to 1.16, root out deprecated `ioutil`
 * fix broken subcommands of subcommands with tab completion and usage
 * support `<file>` syntax formatting rendered as all caps upper without
   the angle brackets and underlined, or just leave if no support in
